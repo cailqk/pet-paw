@@ -1,0 +1,18 @@
+.card {
+    border: 1px solid;
+    margin: 5px;
+    box-shadow: 4px 5px 9px #777;
+    &:hover {
+        transform: scale(1.01);
+        cursor: pointer;
+    }
+    
+}
+
+
+.responsive {
+    padding: 5px;
+    width:  150px;
+    height: 150px;
+    object-fit: cover;
+}

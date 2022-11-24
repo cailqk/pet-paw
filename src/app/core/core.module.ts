@@ -5,16 +5,15 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { RouterModule } from '@angular/router';
-import { LoginComponent } from '../authentication/login/login.component';
-import { RegisterComponent } from '../authentication/register/register.component';
-
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,
