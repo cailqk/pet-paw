@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './authentication/login/login.component';
+import { LogoutComponent } from './authentication/logout/logout.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import { AboutComponent } from './core/about/about.component';
 import { HomeComponent } from './core/home/home.component';
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'auth/register',
     component: RegisterComponent
+  },
+  {
+    path: 'auth/logout',
+    component: LogoutComponent
   },
   {
     path: 'about',
