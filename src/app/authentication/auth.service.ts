@@ -24,6 +24,7 @@ export class AuthService {
 
   login(value: any) {
     this.apiService.logUserIn(value).subscribe((res) => {
+      console.log('from authservice---', res);
       this.user = res;
       this.router.navigate(['/catalog']);
     })

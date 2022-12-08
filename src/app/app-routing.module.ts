@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { createComponent, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './authentication/login/login.component';
 import { LogoutComponent } from './authentication/logout/logout.component';
@@ -7,6 +7,8 @@ import { AboutComponent } from './core/about/about.component';
 import { HomeComponent } from './core/home/home.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { CatalogComponent } from './main/catalog/catalog.component';
+import { CreateComponent } from './main/create/create.component';
+import { DetailsComponent } from './main/details/details.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,14 @@ const routes: Routes = [
   {
     path: 'catalog',
     component: CatalogComponent
+  },
+  {
+    path: 'details',
+    component: DetailsComponent
+  },
+  {
+    path: 'create',
+    component: CreateComponent
   },
   {
     path: 'not-found',

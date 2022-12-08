@@ -15,7 +15,10 @@
 
     <ng-template #loggedInTemplate>
       <li class="nav-item">
-        <a class="nav-link">logged</a>
+        <a class="nav-link">{{user?.username}}'s profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/create">Create</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/auth/logout">Logout</a>

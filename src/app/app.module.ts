@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { MainModule } from './main/main.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
