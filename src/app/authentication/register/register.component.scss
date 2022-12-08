@@ -4,8 +4,18 @@
     padding: 12px;
     border-radius: 12px;
     background-color: rgba(188, 192, 196, .9);
+    max-width: 500px;
 }
 
 button {
     margin-top: 10px;
 }
+
+input {
+    text-align: center;
+}
+
+// input.ng-invalid.ng-touched {
+//     border: 3px solid #A94442;
+// }
+

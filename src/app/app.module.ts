@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
-// import { AuthenticationModule } from './authentication/authentication.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 import { MainModule } from './main/main.module';
 
 
@@ -18,8 +18,8 @@ import { MainModule } from './main/main.module';
     AppRoutingModule,
     CoreModule,
     HttpClientModule,
-    // AuthenticationModule,
-    MainModule
+    AuthenticationModule,
+    MainModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
