@@ -1,4 +1,4 @@
-import { createComponent, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './authentication/login/login.component';
 import { LogoutComponent } from './authentication/logout/logout.component';
@@ -15,10 +15,6 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     component: HomeComponent
-  },
-  {
-    path: 'catalog',
-    component: CatalogComponent
   },
   {
     path: 'details',
@@ -47,6 +43,10 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'catalog',
+    component: CatalogComponent
   },
   {
     path: '**',

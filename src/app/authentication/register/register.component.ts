@@ -7,19 +7,26 @@ import { AuthService } from '../auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
-  constructor(private authService: AuthService) { 
-    
-  }
-  
-  ngOnInit(): void {
+  error: string | null = null;
+
+  constructor(private authService: AuthService) {
   }
 
   registerHandler(form: NgForm) {
-    if(form.invalid) {return;}
-    const value = {email: String, username: String, password: String, repassword: String} = form.value;
-    this.authService.register(value);
+    if (!form.valid) { return; }
+    const value = { email: String, password: String } = form.value;
+    this.error = this.authService.error;
+    this.authService.register(value).subscribe(res => {
+
+      console.log(res);
+      form.reset();
+    },
+      errorRes => {
+        return this.error = errorRes.toString();
+      }
+    );
   }
 
 }

@@ -1,35 +1,28 @@
 import { Injectable } from '@angular/core';
 import { IUser } from '../interfaces';
 import { ApiService } from '../api.service';
-import { Router } from '@angular/router';
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
   user: IUser | null = null;
+  error: string | null = null;
 
   isLoggedIn = () => {
     return this.user !== null;
   }
-  constructor(private apiService: ApiService, private router: Router) {}
-
-  register(value: any) {
-    this.apiService.registerUser(value).subscribe((res) => {
-      this.user = res;
-      this.router.navigate(['/catalog']);
-    })
+  constructor(private apiService: ApiService) {
+   
+  }
+  register(value: {email: string, password: string}) {
+    return this.apiService.registerUser(value);
+  };
+  
+  login(value: {email: string, password: string}) {
+   return this.apiService.logUserIn(value);
   };
 
-  login(value: any) {
-    this.apiService.logUserIn(value).subscribe((res) => {
-      console.log('from authservice---', res);
-      this.user = res;
-      this.router.navigate(['/catalog']);
-    })
-  }
-  
-  
-  
+
+
 }

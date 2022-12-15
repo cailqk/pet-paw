@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -10,20 +9,23 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent {
 
+  error: string | null = null;
 
-  constructor(private router: Router, private authService: AuthService) { 
-
-    // this.authService.user = {
-    //   email: 'samsam@gmail.com',
-    //   username: 'samson'
-    // };
+  constructor(private authService: AuthService) {
   }
 
   loginHandler(form: NgForm) {
-    if(form.invalid) {return;}
-    const value = {email: String, password: String} = form.value;
-    this.authService.login(value);
-    
+    if (form.invalid) { return; }
+    const value = { email: String, password: String } = form.value;
+    this.error = this.authService.error;
+    this.authService.login(value).subscribe(res => {
+      console.log(res);
+    },
+    errorRes => {
+      return this.error = errorRes.toString();
+    }
+    )
+    form.reset();
   }
-  
+
 }
