@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-catalog',
@@ -29,13 +30,12 @@ export class CatalogComponent implements OnInit {
     },
   ];
 
-  constructor() {
-
-
+  constructor(private apiService: ApiService) {
    }  
 
   ngOnInit(): void {
-
+    this.apiService.getAllPets()
   }
+
 
 }

@@ -4,16 +4,18 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SpinnerComponent } from '../core/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent, 
+    SpinnerComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
   ]
 })
 export class AuthenticationModule { }

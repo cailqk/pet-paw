@@ -14,7 +14,7 @@
     </div>
     <div class="form-group">
       <label for="exampleFormControlInput1">Type</label>
-      <select name="types" id="types" class="form-select" [value]="['---']">
+      <select name="types" id="types" name="type" class="form-select" [value]="['---']" ngModel>
         <option value="---" disabled></option>
         <option value="dog">Dog</option>
         <option value="cat">Cat</option>
@@ -27,7 +27,9 @@
         min="0"
         class="form-control"
         id="age"
+        name="age"
         placeholder="age"
+        ngModel
       />
     </div>
     <div class="form-group">
@@ -36,12 +38,14 @@
         type="text"
         class="form-control"
         id="image"
+        name="image"
         placeholder="image URL"
+        ngModel
       />
     </div>
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Description</label>
-      <textarea class="form-control" id="description" rows="3"></textarea>
+      <textarea class="form-control" id="description" name="description" rows="3" ngModel></textarea>
     </div>
     <div>
       <button type="submit" [disabled]="createForm.invalid" class="btn btn-primary">Proceed</button>

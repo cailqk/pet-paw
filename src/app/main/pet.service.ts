@@ -12,7 +12,7 @@ export class PetService {
 createPet(value: any) {
   this.apiService.createPet(value).subscribe((res) => {
     console.log(res);
-    this.router.navigate(['/catalog'])
+    this.router.navigate(['/catalog']);
   })
 }
 

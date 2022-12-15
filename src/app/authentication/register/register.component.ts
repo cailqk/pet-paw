@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class RegisterComponent {
 
   error: string | null = null;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   registerHandler(form: NgForm) {
@@ -19,9 +20,8 @@ export class RegisterComponent {
     const value = { email: String, password: String } = form.value;
     this.error = this.authService.error;
     this.authService.register(value).subscribe(res => {
-
       console.log(res);
-      form.reset();
+      this.router.navigate(['/catalog']);
     },
       errorRes => {
         return this.error = errorRes.toString();
