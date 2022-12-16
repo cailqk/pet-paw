@@ -113,10 +113,6 @@ export class ApiService {
   };
 
   getAllPets = () => {
-    const res = this.http.get<IPet>(`${apiUrl}/pets/add.json`);
-    res.forEach(el => {
-      console.log(el);
-      
-    })
-  }
+   return this.http.get<any>(`${apiUrl}/pets/add.json`);
+  };
 }

@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="card col-3"style="background-color: rgb(80, 179, 77);" *ngFor="let animal of animals">
-      <img class="card-image responsive" [src]="animal.image" alt="Card image cap" />
+    <div class="card col-3"style="background-color: rgb(80, 179, 77);" *ngFor="let animal of petsArr">
+      <img class="card-image responsive" [src]="animal.image" alt="animal pic" />
       <div class="card-body">
-        <h5 class="card-title">{{animal.name}}</h5>
+        <h5 class="card-title">{{animal?.name}}</h5>
         <p class="card-text">
-          {{animal.information}}
+          {{animal.description}}
         </p>
         <a routerLink="/details" class="btn btn-primary">See Details</a>
       </div>
