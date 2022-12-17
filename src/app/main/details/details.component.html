@@ -1,13 +1,17 @@
-<div class="container">
-   <div class="img">
-    <img class="card-image responsive" [src]="" alt="Card image cap" />
-   </div>
-   <h3>Name of pet</h3>
-   <textarea>
-       Some description of the given pet to be written here
-   </textarea>
-   <div class="buttons">
-       <button>Donate</button>
-       <button>Adopt</button>
-   </div>
+<div class="details-container">
+    <div class="details-container-image">
+        <img src="{{pet.image}}" alt="image to be shown here">
+    </div>
+    <div class="details-container-info">
+        <h2>{{pet.name}}</h2>
+        <h3>{{pet.type}}</h3>
+    </div>
+    <div class="details-container-content">
+        <p>{{pet.description}}</p>
+    </div>
+    <div class="btn-container">
+        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-primary" style="background-color: green;">Adopt</button>
+        <button class="btn btn-primary" style="background-color: rgb(221, 31, 31);">Delete</button>
+    </div>
 </div>

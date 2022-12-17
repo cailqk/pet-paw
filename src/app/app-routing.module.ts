@@ -17,8 +17,12 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'details',
-    component: DetailsComponent
+    path: 'catalog',
+    component: CatalogComponent
+  },
+  {
+    path: 'catalog/:id',
+    component: DetailsComponent,
   },
   {
     path: 'create',
@@ -43,10 +47,6 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent
-  },
-  {
-    path: 'catalog',
-    component: CatalogComponent
   },
   {
     path: '**',

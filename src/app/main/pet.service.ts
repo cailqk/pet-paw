@@ -12,11 +12,20 @@ export class PetService {
   createPet(value: any) {
     this.apiService.createPet(value).subscribe((res) => {
       console.log(res);
-      this.router.navigate(['/catalog']);
+      this.router.navigate(['catalog']);
     });
   }
 
   getPets() {
     return this.apiService.getAllPets();
   }
+
+  getSinglePet(id: any) {
+    return this.apiService.getSinglePet(id);
+  }
+
+  deletePet(id: any) {
+    return this.apiService.deletePet(id);
+  }
+
 }

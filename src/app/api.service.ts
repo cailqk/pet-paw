@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Subject, tap, throwError } from 'rxjs';
 import { User } from './authentication/user.model';
@@ -109,10 +109,20 @@ export class ApiService {
     description: string;
   }) => {
     console.log(data);
-    return this.http.post<IPet>(`${apiUrl}/pets/add.json`, data);
+    return this.http.post<IPet>(`${apiUrl}/pets.json`, data);
   };
 
   getAllPets = () => {
-   return this.http.get<any>(`${apiUrl}/pets/add.json`);
+   return this.http.get<any>(`${apiUrl}/pets.json`);
   };
+
+  getSinglePet = (id: any) => {
+    return this.http.get<IPet>(`${apiUrl}/pets/${id}.json`);
+  };
+
+
+  deletePet = (id: any) => {
+    return this.http.delete(`${apiUrl}/pets/:id.json`)
+  };
+
 }
