@@ -16,7 +16,7 @@ export class CreateComponent implements OnInit {
 
   createHandler(form: NgForm) {
     if(form.invalid) {return;}
-    const value = {name: String, type: String, age: Number, imageUrl: String, description: String} = form.value;
+    const value = form.value;
     this.petService.createPet(value);
   }
 

@@ -18,14 +18,14 @@ export class LoginComponent {
     if (form.invalid) {
       return;
     }
-    const value = ({ email: String, password: String } = form.value);
+    const value = form.value;
     this.error = this.authService.error;
     this.isLoading = true;
     this.authService.login(value).subscribe(
       (res) => {
         console.log(res);
         this.isLoading = false;
-        this.router.navigateByUrl('/about');
+        this.router.navigateByUrl('/catalog');
       },
       (errorRes) => {
         this.isLoading = false;
