@@ -120,9 +120,8 @@ export class ApiService {
     return this.http.get<IPet>(`${apiUrl}/pets/${id}.json`);
   };
 
-
   deletePet = (id: any) => {
-    return this.http.delete(`${apiUrl}/pets/:id.json`)
+    return this.http.delete(`${apiUrl}/pets/${id}.json`)
   };
 
 }

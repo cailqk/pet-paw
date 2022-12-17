@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PetService } from '../pet.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class DetailsComponent implements OnInit {
 
    pet: any = {};
 
-  constructor(private petService: PetService, private route: ActivatedRoute) { }
+  constructor(private petService: PetService, private route: ActivatedRoute, private router: Router) { }
   id: any
 
   
@@ -28,6 +28,16 @@ this.petService.getSinglePet(this.id).subscribe(res => {
 })
 }
 
+deleteHandler() {
+  const confirm = window.confirm('Do you really want to delete this pet ?');
+  if(confirm == true) {
+    this.petService.deletePet(this.id).subscribe(res => {
+      console.log(res);
+      this.router.navigate(['catalog']);
+    })
+  }
+  
+}
   
 
 }
