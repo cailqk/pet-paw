@@ -24,7 +24,6 @@ this.route.params.subscribe(res => {
 
 this.petService.getSinglePet(this.id).subscribe(res => {
   this.pet = res;
-  console.log(this.pet);
 })
 }
 
@@ -32,11 +31,14 @@ deleteHandler() {
   const confirm = window.confirm('Do you really want to delete this pet ?');
   if(confirm == true) {
     this.petService.deletePet(this.id).subscribe(res => {
-      console.log(res);
       this.router.navigate(['catalog']);
     })
   }
   
+}
+
+editHandler() {
+  this.router.navigate([`edit/${this.id}`])
 }
   
 

@@ -9,6 +9,7 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
 import { CatalogComponent } from './main/catalog/catalog.component';
 import { CreateComponent } from './main/create/create.component';
 import { DetailsComponent } from './main/details/details.component';
+import { EditComponent } from './main/edit/edit.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'edit/:id',
+    component: EditComponent
   },
   {
     path: '**',

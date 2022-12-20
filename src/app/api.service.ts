@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Subject, tap, throwError } from 'rxjs';
 import { User } from './authentication/user.model';
@@ -123,5 +123,17 @@ export class ApiService {
   deletePet = (id: any) => {
     return this.http.delete(`${apiUrl}/pets/${id}.json`)
   };
+
+  editPet = (data: {
+    name: string;
+    type: string;
+    age: number;
+    image: string;
+    description: string;
+  }, id: any) => {
+    console.log(data, '---',id, 'from api service');
+    
+    return this.http.put<IPet>(`${apiUrl}/pets/${id}.json`, data)
+  }
 
 }

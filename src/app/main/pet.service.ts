@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
 import { ApiService } from '../api.service';
 
 @Injectable({
@@ -26,6 +25,17 @@ export class PetService {
 
   deletePet(id: any) {
     return this.apiService.deletePet(id);
+  }
+
+  editPet(value: any, id: any) {
+    this.apiService.editPet(value, id).subscribe(res => {
+      console.log(res.toString());
+      this.router.navigate([`catalog/${id}`])
+    })
+  }
+
+  discardEdit(id: any) {
+    this.router.navigate([`catalog/${id}`]);
   }
 
 }

@@ -1,0 +1,33 @@
+<div class="container">
+    <form #editForm="ngForm" (ngSubmit)="editHandler(editForm)">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Name</label>
+            <input #nameInput="ngModel" type="text" class="form-control" id="name" name="name" placeholder="Name of pet"
+                [(ngModel)]="pet.name"/>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Type</label>
+            <select name="types" id="types" name="type" class="form-select" [(ngModel)]="pet.type">
+                <option value="---" disabled></option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Age</label>
+            <input type="number" min="0" class="form-control" id="age" name="age" placeholder="age" [(ngModel)]="pet.age"/>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Image</label>
+            <input type="text" class="form-control" id="image" name="image" placeholder="image URL" [(ngModel)]="pet.image"/>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"[(ngModel)]="pet.description"></textarea>
+        </div>
+        <div class="buttons">
+            <button type="submit" style="background-color: rgb(16, 131, 16)"class="btn btn-primary">Save Changes</button>
+            <button type="button" style="background-color: rgb(220, 20, 20)" class="btn btn-primary" (click)="discardHandler()">Discard</button>
+        </div>
+    </form>
+</div>
