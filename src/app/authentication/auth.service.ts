@@ -1,17 +1,12 @@
 import { Injectable } from '@angular/core';
-import { IUser } from '../interfaces';
 import { ApiService } from '../api.service';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  user: IUser | null = null;
   error: string | null = null;
 
-  isLoggedIn = () => {
-    return this.user !== null;
-  }
   constructor(private apiService: ApiService) {
    
   }
@@ -22,6 +17,10 @@ export class AuthService {
   login(value: {email: string, password: string}) {
    return this.apiService.logUserIn(value);
   };
+
+  logout() {
+    return this.apiService.logUserOut();
+  }
 
 
 

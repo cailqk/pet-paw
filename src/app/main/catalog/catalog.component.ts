@@ -10,10 +10,12 @@ import { PetService } from '../pet.service';
 })
 export class CatalogComponent implements OnInit {
   petsArr: any[] = [];
+  isLoading = false;
 
   constructor(private petService: PetService, private router: Router) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.petService
       .getPets()
       .pipe(
@@ -23,6 +25,7 @@ export class CatalogComponent implements OnInit {
               this.petsArr.push({ ...resData[key], id: key });
             }
           }
+          this.isLoading = false;
           return this.petsArr;
         })
       )

@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Subject, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { User } from './authentication/user.model';
 import { IPet } from './interfaces';
 
@@ -25,7 +25,7 @@ interface AuthResData {
   providedIn: 'root',
 })
 export class ApiService {
-  user = new Subject<User>();
+  user = new BehaviorSubject<User>(null!);
 
   constructor(private http: HttpClient) {}
 
@@ -55,6 +55,7 @@ export class ApiService {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
     this.user.next(user);
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   registerUser = (value: { email: string; password: string }) => {
@@ -69,12 +70,14 @@ export class ApiService {
           return this.errorHandler(errorRes);
         }),
         tap((resData) => {
+          
           this.AuthHandler(
             resData.email,
             resData.localId,
             resData.idToken,
             +resData.expiresIn
           );
+          
         })
       );
   };
@@ -85,7 +88,8 @@ export class ApiService {
         email: data.email,
         password: data.password,
         returnSecureToken: true,
-      })
+      },
+)
       .pipe(
         catchError((errorRes) => {
           return this.errorHandler(errorRes);
@@ -100,6 +104,11 @@ export class ApiService {
         })
       );
   };
+
+  logUserOut () {
+    this.user.next(null!);
+    localStorage.clear();
+  }
 
   createPet = (data: {
     name: string;
@@ -134,6 +143,21 @@ export class ApiService {
     console.log(data, '---',id, 'from api service');
     
     return this.http.put<IPet>(`${apiUrl}/pets/${id}.json`, data)
+  }
+
+  keepUser() {
+    const userData = localStorage.getItem('user');
+    if(!userData) {
+      this.logUserOut();
+    } else {
+      const info: {email: string, id: string, _token: string, _tokenExpiration: string} = JSON.parse(userData);
+      const keptUser = new User(info.email, info.id, info._token, new Date(info._tokenExpiration));
+      
+      if(keptUser.token) {
+        this.user.next(keptUser);
+      }
+    }
+
   }
 
 }

@@ -11,7 +11,7 @@ export class LogoutComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService) { 
 
-    // this.authService.user = null;
+    this.authService.logout();
     this.router.navigate(['/'])
   }
 

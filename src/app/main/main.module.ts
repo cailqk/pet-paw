@@ -6,6 +6,7 @@ import { DetailsComponent } from './details/details.component';
 import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
+import { AuthenticationModule } from '../authentication/authentication.module';
 
 
 
@@ -19,7 +20,8 @@ import { EditComponent } from './edit/edit.component';
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    AuthenticationModule
   ],
   exports: [
     CatalogComponent

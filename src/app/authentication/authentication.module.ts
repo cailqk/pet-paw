@@ -16,6 +16,9 @@ import { SpinnerComponent } from '../core/spinner/spinner.component';
     CommonModule,
     FormsModule,
     RouterModule,
+  ],
+  exports: [
+    SpinnerComponent
   ]
 })
 export class AuthenticationModule { }
