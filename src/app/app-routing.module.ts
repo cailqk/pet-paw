@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './authentication/auth.guard';
 import { LoginComponent } from './authentication/login/login.component';
 import { LogoutComponent } from './authentication/logout/logout.component';
 import { RegisterComponent } from './authentication/register/register.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'create',
+    canActivate: [AuthGuard],
     component: CreateComponent
   },
   {
@@ -43,6 +45,7 @@ const routes: Routes = [
   },
   {
     path: 'auth/logout',
+    canActivate: [AuthGuard],
     component: LogoutComponent
   },
   {
@@ -51,6 +54,7 @@ const routes: Routes = [
   },
   {
     path: 'edit/:id',
+    canActivate: [AuthGuard],
     component: EditComponent
   },
   {

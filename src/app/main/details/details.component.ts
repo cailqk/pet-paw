@@ -13,11 +13,15 @@ export class DetailsComponent implements OnInit {
 
   constructor(private petService: PetService, private route: ActivatedRoute, private router: Router) { }
   id: any
+  show: boolean = false;
 
   
   ngOnInit(): void {
-
-
+    const user = localStorage.getItem('user');
+    if(user) {
+      this.show = true;
+    };
+    
 this.route.params.subscribe(res => {
   this.id = res['id'];
 });

@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { User } from './authentication/user.model';
 import { IPet } from './interfaces';
@@ -26,8 +27,9 @@ interface AuthResData {
 })
 export class ApiService {
   user = new BehaviorSubject<User>(null!);
+  private tokenExpired: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   private errorHandler(errorRes: HttpErrorResponse) {
     let errMsg = 'An unknown error occured';
@@ -55,6 +57,7 @@ export class ApiService {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
     this.user.next(user);
+    this.removeUser(expiresIn * 1000);
     localStorage.setItem('user', JSON.stringify(user));
   }
 
@@ -107,7 +110,12 @@ export class ApiService {
 
   logUserOut () {
     this.user.next(null!);
-    localStorage.clear();
+    this.router.navigate(['/']);
+    localStorage.removeItem('user');
+    if(this.tokenExpired) {
+      clearTimeout(this.tokenExpired)
+    };
+    this.tokenExpired = null;
   }
 
   createPet = (data: {
@@ -155,9 +163,17 @@ export class ApiService {
       
       if(keptUser.token) {
         this.user.next(keptUser);
+        const time = new Date(info._tokenExpiration).getTime() - new Date().getTime();
+        this.removeUser(time);
       }
     }
 
+  }
+
+  removeUser(expireTime: number) {
+   this.tokenExpired = setTimeout(() => {
+      this.logUserOut();
+    }, expireTime)
   }
 
 }
