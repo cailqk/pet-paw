@@ -14,7 +14,7 @@ export class DetailsComponent implements OnInit {
   constructor(private petService: PetService, private route: ActivatedRoute, private router: Router) { }
   id: any
   show: boolean = false;
-
+  own: boolean = false;
   
   ngOnInit(): void {
     const user = localStorage.getItem('user');
@@ -28,6 +28,9 @@ this.route.params.subscribe(res => {
 
 this.petService.getSinglePet(this.id).subscribe(res => {
   this.pet = res;
+  if(res.owner == user) {
+    this.own = true;
+  }
 })
 }
 

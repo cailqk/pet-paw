@@ -26,6 +26,7 @@ interface AuthResData {
   providedIn: 'root',
 })
 export class ApiService {
+  owner = localStorage.getItem('user');  
   user = new BehaviorSubject<User>(null!);
   private tokenExpired: any;
 
@@ -124,6 +125,7 @@ export class ApiService {
     age: number;
     image: string;
     description: string;
+    owner: string
   }) => {
     console.log(data);
     return this.http.post<IPet>(`${apiUrl}/pets.json`, data);

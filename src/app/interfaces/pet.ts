@@ -3,5 +3,6 @@ export interface IPet {
     type: string,
     age: number,
     imageUrl: string,
-    description: string
+    description: string,
+    owner: string
 }
