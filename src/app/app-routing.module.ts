@@ -7,6 +7,7 @@ import { RegisterComponent } from './authentication/register/register.component'
 import { AboutComponent } from './core/about/about.component';
 import { HomeComponent } from './core/home/home.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
+import { ProfileComponent } from './core/profile/profile.component';
 import { CatalogComponent } from './main/catalog/catalog.component';
 import { CreateComponent } from './main/create/create.component';
 import { DetailsComponent } from './main/details/details.component';
@@ -56,6 +57,10 @@ const routes: Routes = [
     path: 'edit/:id',
     canActivate: [AuthGuard],
     component: EditComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   },
   {
     path: '**',

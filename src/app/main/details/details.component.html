@@ -12,9 +12,9 @@
     </div>
     <div class="btn-container" *ngIf="this.show">
         <button class="btn btn-primary" style="background-color: green;">Adopt</button>
-        <div *ngIf="this.own">
-            <button class="btn btn-primary"(click)="editHandler()">Edit</button>
-            <button class="btn btn-primary" style="background-color: rgb(221, 31, 31);" (click)="deleteHandler()">Delete</button>
-        </div>
+    </div>
+    <div class="btn-container" *ngIf="this.own">
+        <button class="btn btn-primary"(click)="editHandler()">Edit</button>
+        <button class="btn btn-primary" style="background-color: rgb(221, 31, 31);" (click)="deleteHandler()">Delete</button>
     </div>
 </div>
